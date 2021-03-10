@@ -4,7 +4,35 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e6fe0732e90948f3a6962ddb1186476e" Name="Diagram1" />
+      <Diagram DiagramId="e6fe0732e90948f3a6962ddb1186476e" Name="Diagram1" >
+        <EntityTypeShape EntityType="MovieStoreModel.Actor" Width="1.5" PointX="3" PointY="18.5" />
+        <EntityTypeShape EntityType="MovieStoreModel.Address" Width="1.5" PointX="5.25" PointY="11.125" />
+        <EntityTypeShape EntityType="MovieStoreModel.Category" Width="1.5" PointX="3" PointY="15.75" />
+        <EntityTypeShape EntityType="MovieStoreModel.CreditCardType" Width="1.5" PointX="10.5" PointY="5.5" />
+        <EntityTypeShape EntityType="MovieStoreModel.Movie" Width="1.5" PointX="5.25" PointY="16.625" />
+        <EntityTypeShape EntityType="MovieStoreModel.Payment" Width="1.5" PointX="10.5" PointY="7.875" />
+        <EntityTypeShape EntityType="MovieStoreModel.PaymentInfo" Width="1.5" PointX="12.75" PointY="7.75" />
+        <EntityTypeShape EntityType="MovieStoreModel.PaymentType" Width="1.5" PointX="8.25" PointY="5.5" />
+        <EntityTypeShape EntityType="MovieStoreModel.Person" Width="1.5" PointX="3" PointY="6" />
+        <EntityTypeShape EntityType="MovieStoreModel.Phone" Width="1.5" PointX="5.25" PointY="4.625" />
+        <EntityTypeShape EntityType="MovieStoreModel.PhoneType" Width="1.5" PointX="3" PointY="3.125" />
+        <EntityTypeShape EntityType="MovieStoreModel.Rental" Width="1.5" PointX="5.25" PointY="8.125" />
+        <EntityTypeShape EntityType="MovieStoreModel.Role" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="MovieStoreModel.MovieRental" Width="1.5" PointX="7.5" PointY="8.25" />
+        <AssociationConnector Association="MovieStoreModel.FK_Address_Person" />
+        <AssociationConnector Association="MovieStoreModel.FK_PaymentInfo_CreditCardType" />
+        <AssociationConnector Association="MovieStoreModel.FK_MovieRental_Movie" />
+        <AssociationConnector Association="MovieStoreModel.FK_Payment_PaymentType" />
+        <AssociationConnector Association="MovieStoreModel.FK_Payment_Rental" />
+        <AssociationConnector Association="MovieStoreModel.FK_PaymentInfo_Payment" />
+        <AssociationConnector Association="MovieStoreModel.FK_Person_Role" />
+        <AssociationConnector Association="MovieStoreModel.FK_Phone_Person" />
+        <AssociationConnector Association="MovieStoreModel.FK_Rental_Person" />
+        <AssociationConnector Association="MovieStoreModel.FK_Phone_PhoneType" />
+        <AssociationConnector Association="MovieStoreModel.FK_MovieRental_Rental" />
+        <AssociationConnector Association="MovieStoreModel.MovieActor" />
+        <AssociationConnector Association="MovieStoreModel.MovieCategory" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

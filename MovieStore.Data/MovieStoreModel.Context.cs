@@ -25,5 +25,19 @@ namespace MovieStore.Data
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Actor> Actors { get; set; }
+        public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<CreditCardType> CreditCardTypes { get; set; }
+        public virtual DbSet<Movie> Movies { get; set; }
+        public virtual DbSet<Payment> Payments { get; set; }
+        public virtual DbSet<PaymentInfo> PaymentInfoes { get; set; }
+        public virtual DbSet<PaymentType> PaymentTypes { get; set; }
+        public virtual DbSet<Person> People { get; set; }
+        public virtual DbSet<Phone> Phones { get; set; }
+        public virtual DbSet<PhoneType> PhoneTypes { get; set; }
+        public virtual DbSet<Rental> Rentals { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<MovieRental> MovieRentals { get; set; }
     }
 }
