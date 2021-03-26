@@ -52,9 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actor.cs" />
+    <Compile Include="Address.cs" />
     <Compile Include="Category.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="Member.cs" />
     <Compile Include="Person.cs" />
+    <Compile Include="Phone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

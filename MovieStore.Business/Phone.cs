@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace MovieStore.Business
 {
-    public class Class1
+    public class Phone
     {
+
+        public string PhoneNumber { get; set; }
+
+        public int PhoneTypeId { get; set; }
+
+
     }
 }

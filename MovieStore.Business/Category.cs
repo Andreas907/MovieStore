@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MovieStore.Business
 {
    public class Category
     {
+        #region Properties
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -16,8 +16,11 @@ namespace MovieStore.Business
         public DateTime DateCreated { get; set; }
 
         public DateTime? DateUpdated { get; set; }
+        #endregion
 
 
+
+        #region Constructors
 
         public Category()
         {
@@ -28,12 +31,9 @@ namespace MovieStore.Business
         {
             this.Name = name;
         }
+        #endregion
 
-        public void AddCategory()
-        {
-
-        }
-
+        #region Methods
         public async Task<List<Category>> getCategories()
         {
             using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
@@ -70,6 +70,7 @@ namespace MovieStore.Business
                 await db.SaveChangesAsync();
             }
         }
+        #endregion
 
     }
 }
