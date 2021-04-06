@@ -17,8 +17,8 @@ namespace MovieStore.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Rental()
         {
-            this.Payments = new HashSet<Payment>();
             this.MovieRentals = new HashSet<MovieRental>();
+            this.Payments = new HashSet<Payment>();
         }
     
         public int ID { get; set; }
@@ -26,9 +26,9 @@ namespace MovieStore.Data
         public System.DateTime RENTAL_DATE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MovieRental> MovieRentals { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Payment> Payments { get; set; }
         public virtual Person Person { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MovieRental> MovieRentals { get; set; }
     }
 }

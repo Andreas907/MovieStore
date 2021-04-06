@@ -17,7 +17,7 @@ namespace MovieStore.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Actor()
         {
-            this.Movies = new HashSet<Movie>();
+            this.MovieActors = new HashSet<MovieActor>();
         }
     
         public int ID { get; set; }
@@ -28,6 +28,6 @@ namespace MovieStore.Data
         public Nullable<System.DateTime> DATE_UPDATED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Movie> Movies { get; set; }
+        public virtual ICollection<MovieActor> MovieActors { get; set; }
     }
 }

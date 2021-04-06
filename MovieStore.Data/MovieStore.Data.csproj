@@ -69,6 +69,9 @@
     <Compile Include="Movie.cs">
       <DependentUpon>MovieStoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="MovieActor.cs">
+      <DependentUpon>MovieStoreModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MovieRental.cs">
       <DependentUpon>MovieStoreModel.tt</DependentUpon>
     </Compile>
@@ -110,6 +113,9 @@
       <DependentUpon>MovieStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Role.cs">
+      <DependentUpon>MovieStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>MovieStoreModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

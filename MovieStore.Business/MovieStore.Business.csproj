@@ -54,10 +54,16 @@
     <Compile Include="Actor.cs" />
     <Compile Include="Address.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="CreditCardType.cs" />
     <Compile Include="Member.cs" />
+    <Compile Include="Movie.cs" />
+    <Compile Include="PaymentType.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Phone.cs" />
+    <Compile Include="PhoneType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reference.cs" />
+    <Compile Include="Role.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MovieStore.Data\MovieStore.Data.csproj">

@@ -17,8 +17,8 @@ namespace MovieStore.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Movie()
         {
+            this.MovieActors = new HashSet<MovieActor>();
             this.MovieRentals = new HashSet<MovieRental>();
-            this.Actors = new HashSet<Actor>();
             this.Categories = new HashSet<Category>();
         }
     
@@ -29,13 +29,14 @@ namespace MovieStore.Data
         public string RATING { get; set; }
         public int NUMBER_OF_COPIES { get; set; }
         public byte[] COVER { get; set; }
+        public Nullable<bool> IS_REMOVED { get; set; }
         public System.DateTime DATE_CREATED { get; set; }
         public Nullable<System.DateTime> DATE_UPDATED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MovieRental> MovieRentals { get; set; }
+        public virtual ICollection<MovieActor> MovieActors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Actor> Actors { get; set; }
+        public virtual ICollection<MovieRental> MovieRentals { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Category> Categories { get; set; }
     }

@@ -6,35 +6,12 @@ using System.Threading.Tasks;
 
 namespace MovieStore.Business
 {
-   public class Category
+   public class Category : Base<Category>
     {
-        #region Properties
-        public int Id { get; set; }
 
-        public string Name { get; set; }
-
-        public DateTime DateCreated { get; set; }
-
-        public DateTime? DateUpdated { get; set; }
-        #endregion
-
-
-
-        #region Constructors
-
-        public Category()
-        {
-            
-        }
-
-        public Category (string name)
-        {
-            this.Name = name;
-        }
-        #endregion
 
         #region Methods
-        public async Task<List<Category>> getCategories()
+        public override async Task<List<Category>> getRecords()
         {
             using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
             {
@@ -42,7 +19,7 @@ namespace MovieStore.Business
             }
         }
 
-        public async Task addCategory()
+        public override async Task addRecord()
         {
             using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
             {
@@ -58,7 +35,7 @@ namespace MovieStore.Business
 
         }
 
-        public async Task updateCategory()
+        public override async Task updateRecord()
         {
             using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
             {
