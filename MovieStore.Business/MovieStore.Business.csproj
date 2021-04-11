@@ -57,12 +57,15 @@
     <Compile Include="CreditCardType.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="Movie.cs" />
+    <Compile Include="Payment.cs" />
+    <Compile Include="PaymentInfo.cs" />
     <Compile Include="PaymentType.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Phone.cs" />
     <Compile Include="PhoneType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reference.cs" />
+    <Compile Include="Rental.cs" />
     <Compile Include="Role.cs" />
   </ItemGroup>
   <ItemGroup>
