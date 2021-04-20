@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="MovieStore.Web.Main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Movie Title</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport"content="width=device-width, inital-scale=1, maximum-scale=1, user-scalable=0" />
+
+
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/site.css" />
+    <link rel="stylesheet" href="Content/font-awesome.min.css" />
+
+</head>
+<body>
+    <form id="frmMain" runat="server">
+
+        <asp:ScriptManager ID="smManager" runat="server" />
+
+
+        <nav class="navbar navbar-dark bg-dark">
+            <asp:LinkButton ID="lbtnMovieStore" runat="server" Text="Movie Store" 
+                ToolTip="Movie Store" CssClass="navbar-brand" CausesValidation="false" />
+        </nav>
+
+        <asp:ContentPlaceHolder ID="cphMain" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+
+    <script src="Scripts/jquery-3.5.1.min.js"></script>
+    <script src="Scripts/popper.min.js"></script>
+    <script src="Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+     
+</body>
+</html>
