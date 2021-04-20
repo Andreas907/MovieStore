@@ -15,7 +15,7 @@ namespace MovieStore.Business
         {
             using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
             {
-                return await db.Categories.Select(s => new Category { Id = s.ID, Name = s.NAME }).ToListAsync();
+                return await db.Categories.Select(s => new Category { Id = s.ID, Name = s.NAME, DateCreated = s.DATE_CREATED, DateUpdated = s.DATE_UPDATED }).ToListAsync();
             }
         }
 
