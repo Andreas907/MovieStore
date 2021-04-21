@@ -47,6 +47,17 @@ namespace MovieStore.Business
                 await db.SaveChangesAsync();
             }
         }
+
+        public override async Task<Category> getRecord()
+        {
+            using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
+            {
+                return await db.Categories.Where(w => w.ID == this.Id).Select(s => new Category
+                    {
+                    Name = s.NAME
+                }).FirstOrDefaultAsync();
+            }
+        }
         #endregion
 
     }

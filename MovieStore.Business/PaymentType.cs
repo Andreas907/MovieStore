@@ -23,6 +23,18 @@ namespace MovieStore.Business
             }
         }
 
+        public override async Task<PaymentType> getRecord()
+        {
+            using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
+            {
+                return await db.PaymentTypes.Where(w => w.ID == this.Id).Select(s => new PaymentType
+                {
+                    Name = s.NAME
+                }).FirstOrDefaultAsync();
+            }
+        }
+
+
         public override async Task<List<PaymentType>> getRecords()
         {
             using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())

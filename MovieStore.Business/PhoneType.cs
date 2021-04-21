@@ -23,6 +23,17 @@ namespace MovieStore.Business
             }
         }
 
+        public override async Task<PhoneType> getRecord()
+        {
+            using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
+            {
+                return await db.PhoneTypes.Where(w => w.ID == this.Id).Select(s => new PhoneType
+                {
+                    Name = s.NAME
+                }).FirstOrDefaultAsync();
+            }
+        }
+
         public override async Task<List<PhoneType>> getRecords()
         {
             using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())

@@ -24,6 +24,14 @@ namespace MovieStore.Business
             }
         }
 
+        public override async Task<CreditCardType> getRecord()
+        {
+            using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
+            {
+                return await db.CreditCardTypes.Where(w => w.ID == this.Id).Select(s => new CreditCardType { Name = s.NAME }).FirstOrDefaultAsync();
+            }
+        }
+
         public override async Task<List<CreditCardType>> getRecords()
         {
             using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())

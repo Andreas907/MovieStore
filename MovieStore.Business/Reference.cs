@@ -22,5 +22,7 @@ namespace MovieStore.Business
         public abstract Task updateRecord();
 
         public abstract Task<List<T>> getRecords();
+
+        public abstract Task<T> getRecord();
     }
 }

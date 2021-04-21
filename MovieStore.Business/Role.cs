@@ -23,6 +23,11 @@ namespace MovieStore.Business
             }
         }
 
+        public override Task<Role> getRecord()
+        {
+            throw new NotImplementedException();
+        }
+
         public override async Task<List<Role>> getRecords()
         {
             using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
