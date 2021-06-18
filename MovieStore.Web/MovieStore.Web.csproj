@@ -76,8 +76,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Actors.aspx" />
+    <Content Include="AddActor.aspx" />
     <Content Include="AddCategory.aspx" />
     <Content Include="AddCreditCardType.aspx" />
+    <Content Include="AddMember.aspx" />
+    <Content Include="AddMovie.aspx" />
+    <Content Include="AddPaymentType.aspx" />
+    <Content Include="AddPhoneType.aspx" />
+    <Content Include="BrowseMovies.aspx" />
     <Content Include="Categories.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -130,8 +137,26 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="CreditCardTypes.aspx" />
+    <Content Include="Error.aspx" />
+    <Content Include="Error403.aspx" />
+    <Content Include="Error404.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Login.aspx" />
+    <Content Include="Logout.aspx" />
+    <Content Include="MainMenu.aspx" />
+    <Content Include="Members.aspx" />
+    <Content Include="Movies.aspx" />
+    <Content Include="MyAddressInfo.aspx" />
+    <Content Include="MyPhoneInfo.aspx" />
+    <Content Include="MyProfile.aspx" />
+    <Content Include="MyRentals.aspx" />
+    <Content Include="MySecurityInfo.aspx" />
+    <Content Include="PaymentTypes.aspx" />
+    <Content Include="PhoneTypes.aspx" />
+    <Content Include="Register.aspx" />
+    <Content Include="Rentals.aspx" />
+    <Content Include="RentMovie.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -239,11 +264,33 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="UpdateActor.aspx" />
+    <Content Include="UpdateAddressInfo.aspx" />
     <Content Include="UpdateCategory.aspx" />
     <Content Include="UpdateCreditCardType.aspx" />
+    <Content Include="UpdateMember.aspx" />
+    <Content Include="UpdateMovie.aspx" />
+    <Content Include="UpdatePaymentType.aspx" />
+    <Content Include="UpdatePhoneInfo.aspx" />
+    <Content Include="UpdatePhoneType.aspx" />
+    <Content Include="UpdateSecurityInfo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actors.aspx.cs">
+      <DependentUpon>Actors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Actors.aspx.designer.cs">
+      <DependentUpon>Actors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddActor.aspx.cs">
+      <DependentUpon>AddActor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddActor.aspx.designer.cs">
+      <DependentUpon>AddActor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddCategory.aspx.cs">
       <DependentUpon>AddCategory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -257,6 +304,41 @@
     </Compile>
     <Compile Include="AddCreditCardType.aspx.designer.cs">
       <DependentUpon>AddCreditCardType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddMember.aspx.cs">
+      <DependentUpon>AddMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddMember.aspx.designer.cs">
+      <DependentUpon>AddMember.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddMovie.aspx.cs">
+      <DependentUpon>AddMovie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddMovie.aspx.designer.cs">
+      <DependentUpon>AddMovie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddPaymentType.aspx.cs">
+      <DependentUpon>AddPaymentType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddPaymentType.aspx.designer.cs">
+      <DependentUpon>AddPaymentType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddPhoneType.aspx.cs">
+      <DependentUpon>AddPhoneType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddPhoneType.aspx.designer.cs">
+      <DependentUpon>AddPhoneType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BrowseMovies.aspx.cs">
+      <DependentUpon>BrowseMovies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BrowseMovies.aspx.designer.cs">
+      <DependentUpon>BrowseMovies.aspx</DependentUpon>
     </Compile>
     <Compile Include="Categories.aspx.cs">
       <DependentUpon>Categories.aspx</DependentUpon>
@@ -272,8 +354,43 @@
     <Compile Include="CreditCardTypes.aspx.designer.cs">
       <DependentUpon>CreditCardTypes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error403.aspx.cs">
+      <DependentUpon>Error403.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error403.aspx.designer.cs">
+      <DependentUpon>Error403.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error404.aspx.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error404.aspx.designer.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
@@ -282,7 +399,112 @@
     <Compile Include="Main.Master.designer.cs">
       <DependentUpon>Main.Master</DependentUpon>
     </Compile>
+    <Compile Include="MainMenu.aspx.cs">
+      <DependentUpon>MainMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainMenu.aspx.designer.cs">
+      <DependentUpon>MainMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Members.aspx.cs">
+      <DependentUpon>Members.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Members.aspx.designer.cs">
+      <DependentUpon>Members.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Movies.aspx.cs">
+      <DependentUpon>Movies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Movies.aspx.designer.cs">
+      <DependentUpon>Movies.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyAddressInfo.aspx.cs">
+      <DependentUpon>MyAddressInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyAddressInfo.aspx.designer.cs">
+      <DependentUpon>MyAddressInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyPhoneInfo.aspx.cs">
+      <DependentUpon>MyPhoneInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyPhoneInfo.aspx.designer.cs">
+      <DependentUpon>MyPhoneInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyProfile.aspx.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyProfile.aspx.designer.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyRentals.aspx.cs">
+      <DependentUpon>MyRentals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyRentals.aspx.designer.cs">
+      <DependentUpon>MyRentals.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MySecurityInfo.aspx.cs">
+      <DependentUpon>MySecurityInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MySecurityInfo.aspx.designer.cs">
+      <DependentUpon>MySecurityInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentTypes.aspx.cs">
+      <DependentUpon>PaymentTypes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentTypes.aspx.designer.cs">
+      <DependentUpon>PaymentTypes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneTypes.aspx.cs">
+      <DependentUpon>PhoneTypes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PhoneTypes.aspx.designer.cs">
+      <DependentUpon>PhoneTypes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Rentals.aspx.cs">
+      <DependentUpon>Rentals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Rentals.aspx.designer.cs">
+      <DependentUpon>Rentals.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RentMovie.aspx.cs">
+      <DependentUpon>RentMovie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RentMovie.aspx.designer.cs">
+      <DependentUpon>RentMovie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateActor.aspx.cs">
+      <DependentUpon>UpdateActor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateActor.aspx.designer.cs">
+      <DependentUpon>UpdateActor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateAddressInfo.aspx.cs">
+      <DependentUpon>UpdateAddressInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateAddressInfo.aspx.designer.cs">
+      <DependentUpon>UpdateAddressInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UpdateCategory.aspx.cs">
       <DependentUpon>UpdateCategory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -296,6 +518,48 @@
     </Compile>
     <Compile Include="UpdateCreditCardType.aspx.designer.cs">
       <DependentUpon>UpdateCreditCardType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateMember.aspx.cs">
+      <DependentUpon>UpdateMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateMember.aspx.designer.cs">
+      <DependentUpon>UpdateMember.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateMovie.aspx.cs">
+      <DependentUpon>UpdateMovie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateMovie.aspx.designer.cs">
+      <DependentUpon>UpdateMovie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdatePaymentType.aspx.cs">
+      <DependentUpon>UpdatePaymentType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdatePaymentType.aspx.designer.cs">
+      <DependentUpon>UpdatePaymentType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdatePhoneInfo.aspx.cs">
+      <DependentUpon>UpdatePhoneInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdatePhoneInfo.aspx.designer.cs">
+      <DependentUpon>UpdatePhoneInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdatePhoneType.aspx.cs">
+      <DependentUpon>UpdatePhoneType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdatePhoneType.aspx.designer.cs">
+      <DependentUpon>UpdatePhoneType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateSecurityInfo.aspx.cs">
+      <DependentUpon>UpdateSecurityInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateSecurityInfo.aspx.designer.cs">
+      <DependentUpon>UpdateSecurityInfo.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

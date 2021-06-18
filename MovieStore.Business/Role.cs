@@ -47,5 +47,12 @@ namespace MovieStore.Business
                 await db.SaveChangesAsync();
             }
         }
+        public async Task<int> getUserRoleId()
+        {
+            using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
+            {
+                return await db.Roles.Where(w => w.NAME.Equals("User")).Select(s => s.ID).FirstOrDefaultAsync();
+            }
+        }
     }
 }

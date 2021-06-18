@@ -1,2 +1,37 @@
-﻿
-    
+﻿.container {
+    margin-top: 20px;
+}
+
+/* CSS for smaller view spaces */
+@media screen and (max-width: 768px) {
+
+    /* hide table headings */
+    .bootstrap-replace-table-responsive table thead {
+        display: none;
+    }
+
+    /* treat rows like divs */
+    .bootstrap-replace-table-responsive table tr {
+        display: block;
+        border-top: 2px solid lightgray; /* separate row data with thicker line */
+        margin-top: 5px;
+    }
+
+    /* treat columns like divs */
+    .bootstrap-replace-table-responsive table td {
+        display: block;
+        text-align: right; /* text to right */
+    }
+
+        /* this part is ugly, but necessary to show label on left */
+        .bootstrap-replace-table-responsive table td:before {
+            content: attr(data-label);
+            float: left; /* label to left */
+            font-weight: 700;
+        }
+}
+
+.img-thumbnail {
+    height: 200px !important;
+    width: 200px !important;
+}

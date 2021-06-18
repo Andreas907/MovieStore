@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace MovieStore.Business
 {
-   public class Movie
+    public class Movie
     {
         public int Id { get; set; }
 
         public string Title { get; set; }
+
+        public bool ActiveOnly { get; set; }
 
         public string Description { get; set; }
 
@@ -21,63 +23,61 @@ namespace MovieStore.Business
 
         public int NumberOfCopies { get; set; }
 
+        public bool IsRemoved { get; set; }
+
         public byte[] Cover { get; set; }
 
         public List<Actor> Actors { get; set; }
+
 
         public async Task addMovie()
         {
             using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
             {
-                MovieStore.Data.Movie movie = new MovieStore.Data.Movie();
-
-                movie.COVER = this.Cover;
-                movie.DATE_CREATED = DateTime.Now;
-                movie.DESCRIPTION = this.Description;
-                movie.TITLE = this.Title;
-                movie.NUMBER_OF_COPIES = this.NumberOfCopies;
-                movie.RATING = this.Rating;
-                movie.RELEASE_YEAR = this.ReleaseYear;
-
-                db.Movies.Add(movie);
-                await db.SaveChangesAsync();
-            }
-
-
-        }
-
-
-        public async Task updateMovieCover()
-        {
-            using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
-            {
-                var movie = await db.Movies.Where(w => w.ID == this.Id).FirstOrDefaultAsync();
-
-                if (movie != null)
+                using (var transaction = db.Database.BeginTransaction())
                 {
-                    movie.COVER = this.Cover;
-                    movie.DATE_UPDATED = DateTime.Now;
+                    try
+                    {
+                        MovieStore.Data.Movie movie = new MovieStore.Data.Movie();
 
-                    await db.SaveChangesAsync();
+                        movie.COVER = this.Cover;
+                        movie.DATE_CREATED = DateTime.Now;
+                        movie.DESCRIPTION = this.Description;
+                        movie.TITLE = this.Title;
+                        movie.NUMBER_OF_COPIES = this.NumberOfCopies;
+                        movie.RATING = this.Rating;
+                        movie.RELEASE_YEAR = this.ReleaseYear;
+                        movie.IS_REMOVED = false;
 
+                        db.Movies.Add(movie);
+
+                        await db.SaveChangesAsync();
+
+                        if (this.Actors != null && this.Actors.Count > 0)
+                        {
+                            foreach (var item in this.Actors)
+                            {
+                                MovieStore.Data.MovieActor movieActor = new Data.MovieActor();
+
+                                movieActor.ACTOR_ID = item.Id;
+                                movieActor.MOVIE_ID = movie.ID;
+                                movieActor.DATE_CREATED = DateTime.Now;
+
+                                db.MovieActors.Add(movieActor);
+
+                                await db.SaveChangesAsync();
+                            }
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
+                    }
                 }
-            }
-        }
 
-        public async Task updateNumberOfCopies()
-        {
-            using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
-            {
-                var movie = await db.Movies.Where(w => w.ID == this.Id).FirstOrDefaultAsync();
-
-                if (movie != null)
-                {
-                    movie.NUMBER_OF_COPIES = this.NumberOfCopies;
-                    movie.DATE_UPDATED = DateTime.Now;
-
-                    await db.SaveChangesAsync();
-
-                }
             }
         }
 
@@ -86,93 +86,98 @@ namespace MovieStore.Business
         {
             using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
             {
-                var movie = await db.Movies.Where(w => w.ID == this.Id).FirstOrDefaultAsync();
-
-                if (movie != null)
+                using (var transaction = db.Database.BeginTransaction())
                 {
-                    movie.TITLE = this.Title;
-                    movie.DESCRIPTION = this.Description;
-                    movie.RATING = this.Rating;
-                    movie.RELEASE_YEAR = this.ReleaseYear;
-                    movie.DATE_UPDATED = DateTime.Now;
-
-                    await db.SaveChangesAsync();
-
-                }
-
-            }
-
-        }
-
-        public async Task addActors()
-        {
-            using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
-            {
-                if (this.Actors != null && this.Actors.Count > 0)
-                {
-                    using (var transaction = db.Database.BeginTransaction())
+                    try
                     {
-                        try
-                        {
-                            foreach (var item in this.Actors)
-                            {
-                                MovieStore.Data.MovieActor movieActor = new MovieStore.Data.MovieActor();
+                        var movie = await db.Movies.Where(w => w.ID == this.Id).FirstOrDefaultAsync();
 
-                                movieActor.ACTOR_ID = item.Id;
-                                movieActor.MOVIE_ID = this.Id;
-                                movieActor.DATE_CREATED = DateTime.Now;
+                        if (movie != null)
+                        {
+                            if (this.Cover != null)
+                            {
+                                movie.COVER = this.Cover;
+                            }
+                            movie.DATE_UPDATED = DateTime.Now;
+                            movie.DESCRIPTION = this.Description;
+                            movie.TITLE = this.Title;
+                            movie.NUMBER_OF_COPIES = this.NumberOfCopies;
+                            movie.RATING = this.Rating;
+                            movie.RELEASE_YEAR = this.ReleaseYear;
+
+                            await db.SaveChangesAsync();
+
+                            var movieActors = await db.MovieActors.Where(w => w.MOVIE_ID == this.Id).ToListAsync();
+
+                            if (movieActors != null && movieActors.Count > 0)
+                            {
+                                db.MovieActors.RemoveRange(movieActors);
 
                                 await db.SaveChangesAsync();
+                            }
 
+                            if (this.Actors != null && this.Actors.Count > 0)
+                            {
+                                foreach (var item in this.Actors)
+                                {
+                                    MovieStore.Data.MovieActor movieActor = new Data.MovieActor();
 
+                                    movieActor.ACTOR_ID = item.Id;
+                                    movieActor.MOVIE_ID = movie.ID;
+                                    movieActor.DATE_CREATED = DateTime.Now;
+
+                                    db.MovieActors.Add(movieActor);
+
+                                    await db.SaveChangesAsync();
+                                }
                             }
 
                             transaction.Commit();
-
-
-                        }
-                        catch (Exception ex)
-                        {
-                            transaction.Rollback();
-                            throw ex;
                         }
                     }
-
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
+                    }
                 }
             }
         }
 
-        public async Task removeMovie()
+
+        public void removeMovie()
         {
             using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
             {
-                var movie = await db.Movies.Where(w => w.ID == this.Id).FirstOrDefaultAsync();
+                var movie = db.Movies.Where(w => w.ID == this.Id).FirstOrDefault();
 
                 if (movie != null)
                 {
                     movie.IS_REMOVED = true;
                     movie.DATE_UPDATED = DateTime.Now;
 
+                    db.SaveChanges();
                 }
-
             }
         }
 
-        public async Task readdMovie()
+
+        public void readdMovie()
         {
             using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
             {
-                var movie = await db.Movies.Where(w => w.ID == this.Id).FirstOrDefaultAsync();
+                var movie = db.Movies.Where(w => w.ID == this.Id).FirstOrDefault();
 
                 if (movie != null)
                 {
                     movie.IS_REMOVED = false;
                     movie.DATE_UPDATED = DateTime.Now;
 
+                    db.SaveChanges();
                 }
-
             }
         }
+
 
         public async Task<Movie> getMovie()
         {
@@ -180,23 +185,24 @@ namespace MovieStore.Business
             {
                 return await db.Movies.Where(w => w.ID == this.Id).Select(s => new Movie
                 {
-                     Cover = s.COVER,
-                      Description = s.DESCRIPTION,
-                       Id = s.ID,
-                        NumberOfCopies = s.NUMBER_OF_COPIES,
-                         Rating = s.RATING,
-                          ReleaseYear = s.RELEASE_YEAR,
-                           Title = s.TITLE,
-                            Actors = s.MovieActors.Where(w => w.MOVIE_ID == this.Id).Select(x => new Actor 
-                            {
-                                Id = x.ACTOR_ID, 
-                                FirstName = x.Actor.FIRST_NAME,
-                                MiddleName = x.Actor.MIDDLE_NAME,
-                                LastName = x.Actor.LAST_NAME
-                            }).ToList()
+                    Cover = s.COVER,
+                    Description = s.DESCRIPTION,
+                    Id = s.ID,
+                    NumberOfCopies = s.NUMBER_OF_COPIES,
+                    Rating = s.RATING,
+                    ReleaseYear = s.RELEASE_YEAR,
+                    Title = s.TITLE,
+                    Actors = s.MovieActors.Where(w => w.MOVIE_ID == this.Id).Select(x => new Actor
+                    {
+                        Id = x.ACTOR_ID,
+                        FirstName = x.Actor.FIRST_NAME,
+                        MiddleName = x.Actor.MIDDLE_NAME,
+                        LastName = x.Actor.LAST_NAME
+                    }).ToList()
                 }).FirstOrDefaultAsync();
             }
         }
+
 
         public async Task<List<Movie>> getMovies()
         {
@@ -211,6 +217,7 @@ namespace MovieStore.Business
                     Rating = s.RATING,
                     ReleaseYear = s.RELEASE_YEAR,
                     Title = s.TITLE,
+                    IsRemoved = s.IS_REMOVED.Value,
                     Actors = s.MovieActors.Where(w => w.MOVIE_ID == s.ID).Select(x => new Actor
                     {
                         Id = x.ACTOR_ID,
@@ -222,11 +229,43 @@ namespace MovieStore.Business
             }
         }
 
+
+        public async Task<List<Movie>> browseMovies()
+        {
+            using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
+            {
+                return await db.Movies.Where(w => w.IS_REMOVED == false).Select(s => new Movie
+                {
+                    Cover = s.COVER,
+                    Description = s.DESCRIPTION,
+                    Id = s.ID,
+                    NumberOfCopies = s.NUMBER_OF_COPIES,
+                    Rating = s.RATING,
+                    ReleaseYear = s.RELEASE_YEAR,
+                    Title = s.TITLE,
+                    IsRemoved = s.IS_REMOVED.Value,
+                    Actors = s.MovieActors.Where(w => w.MOVIE_ID == s.ID).Select(x => new Actor
+                    {
+                        Id = x.ACTOR_ID,
+                        FirstName = x.Actor.FIRST_NAME,
+                        MiddleName = x.Actor.MIDDLE_NAME,
+                        LastName = x.Actor.LAST_NAME
+                    }).ToList()
+                }).ToListAsync();
+            }
+        }
+
+
         public async Task<List<Movie>> searchMovies()
         {
             using (MovieStore.Data.MovieStoreEntities db = new MovieStore.Data.MovieStoreEntities())
             {
                 var movies = db.Movies.Select(s => s);
+
+                if (this.ActiveOnly == true)
+                {
+                    movies = movies.Where(w => w.IS_REMOVED == false);
+                }
 
                 if (!string.IsNullOrEmpty(this.Title))
                 {
@@ -247,17 +286,18 @@ namespace MovieStore.Business
                 {
                     foreach (var item in this.Actors)
                     {
-                        movies = movies.Where(w => w.MovieActors.Any(x => x.ACTOR_ID == item.Id));
+                        movies = movies.Where(w => w.MovieActors.Any(a => a.ACTOR_ID == item.Id));
                     }
                 }
 
-                return await movies.Select(s => new Movie 
+                return await movies.Select(s => new Movie
                 {
                     Cover = s.COVER,
                     Description = s.DESCRIPTION,
                     Id = s.ID,
                     NumberOfCopies = s.NUMBER_OF_COPIES,
                     Rating = s.RATING,
+                    IsRemoved = s.IS_REMOVED.Value,
                     ReleaseYear = s.RELEASE_YEAR,
                     Title = s.TITLE,
                     Actors = s.MovieActors.Where(w => w.MOVIE_ID == s.ID).Select(x => new Actor
@@ -270,6 +310,5 @@ namespace MovieStore.Business
                 }).ToListAsync();
             }
         }
-
     }
 }

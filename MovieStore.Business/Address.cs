@@ -8,6 +8,7 @@ namespace MovieStore.Business
 {
     public class Address
     {
+        public int Id { get; set; }
         public string AddressLine1 { get; set; }
 
         public string AddressLine2 { get; set; }
@@ -19,11 +20,5 @@ namespace MovieStore.Business
         public string State { get; set; }
 
         public bool IsPrimary { get; set; }
-
-
-
-
-
-
     }
 }
